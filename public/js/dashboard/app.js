@@ -1744,9 +1744,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.inputRes = "is-invalid";
                 this.feedbackBox = response.data.errors.message[0];
             } else {
-                this.feedbackRes = "";
+                this.feedbackRes = "text-success font-weight-bold";
                 this.inputRes = "";
-                this.feedbackBox = "Your message was sent!";
+                this.feedbackBox = "The Home message was updated!";
             }
         }
     }
@@ -8327,7 +8327,7 @@ function load() {
 
   // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
   if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"","NODE_ENV":"development"}).DEBUG;
+    r = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).DEBUG;
   }
 
   return r;
@@ -45428,6 +45428,19 @@ function isBuf(obj) {
 
 /***/ }),
 
+/***/ "./node_modules/startbootstrap-sb-admin/js/sb-admin.min.js":
+/***/ (function(module, exports) {
+
+/*!
+ * Start Bootstrap - SB Admin v5.0.2 (https://startbootstrap.com/template-overviews/sb-admin)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
+ */
+
+!function(t){"use strict";t("#sidebarToggle").click(function(e){e.preventDefault(),t("body").toggleClass("sidebar-toggled"),t(".sidebar").toggleClass("toggled")}),t("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel",function(e){if(768<$window.width()){var o=e.originalEvent,t=o.wheelDelta||-o.detail;this.scrollTop+=30*(t<0?1:-1),e.preventDefault()}}),t(document).scroll(function(){100<t(this).scrollTop()?t(".scroll-to-top").fadeIn():t(".scroll-to-top").fadeOut()}),t(document).on("click","a.scroll-to-top",function(e){var o=t(this);t("html, body").stop().animate({scrollTop:t(o.attr("href")).offset().top},1e3,"easeInOutExpo"),e.preventDefault()})}(jQuery);
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45681,7 +45694,7 @@ var render = function() {
         attrs: { type: "button" },
         on: { click: _vm.save }
       },
-      [_vm._v("Go!")]
+      [_c("strong", [_vm._v("Send!")])]
     )
   ])
 }
@@ -56872,6 +56885,11 @@ window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
  */
 
 __webpack_require__("./resources/js/bootstrap.js");
+
+/* SB Admin */
+$(window).on('load', function () {
+  __webpack_require__("./node_modules/startbootstrap-sb-admin/js/sb-admin.min.js");
+});
 
 window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 
