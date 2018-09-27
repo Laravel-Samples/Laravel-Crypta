@@ -2,7 +2,7 @@
     <div>
         <input type="text" v-model="newMessage" @keydown.enter="save" class="form-control" :class="inputRes" autofocus>
          <div :class="feedbackRes" v-html="feedbackBox"></div>
-        <button type="button" class="btn btn-primary mt-4" @click="save">Go!</button>
+         <button type="button" class="btn btn-primary mt-4" @click="save"><strong>Send!</strong></button>
     </div>
 </template>
 
@@ -33,9 +33,9 @@
                     this.inputRes = "is-invalid";
                     this.feedbackBox = response.data.errors.message[0];
                 } else {
-                    this.feedbackRes = "";
+                    this.feedbackRes = "text-success font-weight-bold";
                     this.inputRes = "";
-                    this.feedbackBox = "Your message was sent!";
+                    this.feedbackBox = "The Home message was updated!";
                 }
             }
         }        
