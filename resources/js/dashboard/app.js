@@ -7,6 +7,11 @@
 
 require('./../bootstrap');
 
+/* SB Admin */
+$(window).on('load', function() {
+    require('startbootstrap-sb-admin/js/sb-admin.min.js');
+});
+
 window.Vue = require('vue');
 
 /**
