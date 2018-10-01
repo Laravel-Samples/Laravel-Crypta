@@ -14,5 +14,8 @@
 |
  */
 
+/* Update the home page message */
+Route::post('/send-message', 'DashboardController@sendPublicMessage');
+
 /* dispatch transfer */
 Route::post('/process-transfer', 'TransferController@processTransfer');

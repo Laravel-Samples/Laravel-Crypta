@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="text-center">{{ $message }}</h1>
+            <public-message :home-message="{{ $message }}"></public-message>
         </div>
     </div>
 </div>
