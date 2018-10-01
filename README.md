@@ -1,6 +1,8 @@
-# Laravel 5.7
+License
+----
 
+MIT
 
 **by [Thiago Mallon]**
 
-[Thiago Mallon]: <https://www.linkedin.com/in/thiago-mallon/>
+ [Thiago Mallon]: <https://www.linkedin.com/in/thiago-mallon/>
