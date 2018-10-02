@@ -15,6 +15,7 @@ window.Vue = require('vue');
  */
 Vue.component('home-message-block', require('./components/UpdateHomeMessage.vue'));
 Vue.component('transfer-block', require('./components/TransferSent.vue'));
+Vue.component('bell-refresh', require('./components/BellRefresh.vue'));
 
 
 const app = new Vue({
@@ -23,7 +24,7 @@ const app = new Vue({
         userId: $('#user-id').val()
     },
     created() {
-        window.Echo.private('transfer-sent.' + this.userId)
+        window.Echo.private('user.' + this.userId)
             .notification((response) => {
                 this.setUpModal('Trasfer received!');
                 this.incUnreadNotifs();
