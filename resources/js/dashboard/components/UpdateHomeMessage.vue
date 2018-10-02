@@ -3,8 +3,8 @@
         <div class="form-row">
             <div class="col">
                 <label for="transfer-username">Home Message</label>
-                <input type="text" v-model="newMessage" @keydown.enter="save" 
-                class="form-control" v-bind:class="{'is-invalid': invalidRes}" 
+                <input type="text" v-model="newMessage" @keydown.enter="save"
+                class="form-control" v-bind:class="{'is-invalid': invalidRes}"
                 placeholder="Write here your home message..." autofocus>
                 <div :class="{'invalid-feedback': invalidRes}" v-html="feedbackBox"></div>
             </div>
@@ -17,14 +17,14 @@
 
 <script>
     export default {
-        data() { 
+        data() {
             return {
                 newMessage: '',
                 feedbackBox: '',
                 invalidRes: false,
             }
         },
-        methods: {            
+        methods: {
             save() {
                     axios.post(`/ajax/send-message`, {message: this.newMessage })
                      .catch(function (error) {
@@ -42,6 +42,6 @@
                     this.feedbackBox = "Your message was sent!";
                 }
             }
-        }        
+        }
     };
 </script>
