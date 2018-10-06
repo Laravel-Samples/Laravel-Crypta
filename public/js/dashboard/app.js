@@ -1758,10 +1758,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -57141,9 +57137,9 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('home-message-block', __webpack_require__("./resources/js/dashboard/components/UpdateHomeMessage.vue"));
 Vue.component('transfer-block', __webpack_require__("./resources/js/dashboard/components/TransferSent.vue"));
 Vue.component('bell-refresh', __webpack_require__("./resources/js/dashboard/components/BellRefresh.vue"));
+Vue.component('home-message-block', __webpack_require__("./resources/js/dashboard/components/UpdateHomeMessage.vue"));
 
 var app = new Vue({
     el: '#app',
@@ -57171,6 +57167,18 @@ var app = new Vue({
         incUnreadNotifs: function incUnreadNotifs() {
             var unread = parseInt($("#unread_notifs").html());
             $("#unread_notifs").html(unread + 1);
+        },
+        transactionsClick: function transactionsClick() {
+            $("#unread_notifs").html(0);
+            $.ajax({
+                url: "/ajax/dropdown-notifs",
+                method: "GET"
+            }).done(function (data) {
+                $("#dropd_transactions").find('a.transaction-item').remove();
+                data.reverse().forEach(function (elm) {
+                    $("#dropd_transactions").prepend('<a class="dropdown-item transaction-item" href="/transactions">' + elm.emitter + ' ' + elm.amount + ' ' + elm.created_at + '</a>');
+                });
+            });
         }
     }
 });
