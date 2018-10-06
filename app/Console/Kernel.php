@@ -48,7 +48,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('user:crypt_increment')->everyMinutes();          
+        $schedule->command('user:crypt_increment')->everyMinute();
     }
 
     /**

@@ -93,16 +93,24 @@ class User extends Authenticatable
      */
     public function getUserReceivings(int $userId): object
     {
-            return \DB::table('users as u')
-                ->select(
-                    'u.username as receiver', 't.amount', 't.created_at',
-                    'tu.username as emitter'
-                )
-                ->leftJoin('transfers as t', 'u.id', '=', 't.user_id')
-                ->leftJoin('user_transfers as ut', 't.id', '=', 'ut.transfer_id')
-                ->leftJoin('users as tu', 'tu.id', '=', 'ut.user_id')
-                ->where('u.id', $userId)
-                ->where('ut.id', '!=', 'NULL');
+        return \DB::table('users as u')
+            ->select(
+                'u.username as receiver', 't.amount', 't.created_at',
+                'tu.username as emitter'
+            )
+            ->leftJoin('transfers as t', 'u.id', '=', 't.user_id')
+            ->leftJoin('user_transfers as ut', 't.id', '=', 'ut.transfer_id')
+            ->leftJoin('users as tu', 'tu.id', '=', 'ut.user_id')
+            ->where('u.id', $userId)
+        /* the engine creates an aditional value, this where condition was
+         * inserted to avoid this
+         */
+            ->where('ut.id', '!=', 'NULL');
+        if ($limit) {
+            $query->limit($limit);
+        }
+
+        return $query;
     }
 
     /**

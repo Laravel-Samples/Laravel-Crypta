@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | AJAX Routes
@@ -13,9 +12,8 @@
 | a configuration in the mapAjaxRoutes in the \App\Providers\RouteServiceProvider.
 |
  */
-
 /* Update the home page message */
 Route::post('/send-message', 'DashboardController@sendPublicMessage');
-
 /* dispatch transfer */
 Route::post('/process-transfer', 'TransferController@processTransfer');
+Route::get('/dropdown-notifs', 'TransferController@getDropDownNotifications');

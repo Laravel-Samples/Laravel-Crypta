@@ -13,9 +13,9 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('home-message-block', require('./components/UpdateHomeMessage.vue'));
 Vue.component('transfer-block', require('./components/TransferSent.vue'));
 Vue.component('bell-refresh', require('./components/BellRefresh.vue'));
+Vue.component('home-message-block', require('./components/UpdateHomeMessage.vue'));
 
 
 const app = new Vue({
@@ -42,6 +42,20 @@ const app = new Vue({
         incUnreadNotifs() {
             let unread = parseInt($("#unread_notifs").html());
             $("#unread_notifs").html(unread + 1);
+        },
+        transactionsClick() {
+            $("#unread_notifs").html(0);
+            $.ajax({
+                url: "/ajax/dropdown-notifs",
+                method: "GET"
+            }).done(function(data){
+                $("#dropd_transactions").find('a.transaction-item').remove();
+                data.reverse().forEach(function(elm){
+                    $("#dropd_transactions").prepend('<a class="dropdown-item transaction-item" href="/transactions">'+elm.emitter+' '+elm.amount+' '+elm.created_at+'</a>');
+                });
+            });
         }
     }
 });
+
+
