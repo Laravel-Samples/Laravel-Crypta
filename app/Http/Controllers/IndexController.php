@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Inspiring;
 
 /**
- * Class FrontController
+ * Class IndexController
  *
  * @category Controllers
  * @package  App\Http\Controllers
@@ -28,7 +28,7 @@ use Illuminate\Foundation\Inspiring;
  * @license  MIT https://opensource.org/licenses/MIT
  * @link     https://www.linkedin.com/in/thiago-mallon/
  */ 
-class FrontController extends Controller
+class IndexController extends Controller
 {
     /**
      * Public method __construct - Constructor method
@@ -55,6 +55,6 @@ class FrontController extends Controller
             $homeMessage->message : Inspiring::quote();
         $message = json_encode(['message'=> $message]);
 
-        return view('front.home', compact('message'));
+        return view('index.home', compact('message'));
     }
 }
